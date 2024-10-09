@@ -390,6 +390,11 @@ impl Decal {
     Self { inner, sprite }
   }
 
+  pub fn new_p(sprite: &Sprite) -> Self {
+    let inner = unsafe { cpp::DecalConstructor(sprite.inner) };
+    Self { inner, sprite }
+  }
+
   /// Returns id of the decal.
   pub fn id(&self) -> i32 {
     unsafe { cpp::DecalId(&self.inner) }
